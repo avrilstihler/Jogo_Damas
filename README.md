@@ -1,11 +1,8 @@
-![Status](https://img.shields.io/badge/status-online-brightgreen)
-![License](https://img.shields.io/github/license/AvrilStihler/Jogo_Damas)
-![Made with](https://img.shields.io/badge/made%20with-HTML%20%7C%20CSS%20%7C%20JS-blue)
-![Style](https://img.shields.io/badge/style-pixel%20art-critical)
-
 # 🎨♟️ Damas Pixeladas
 
 Bem-vindo(a) ao **Damas Pixeladas**, um jogo de damas online desenvolvido em **HTML**, **CSS** e **JavaScript**. As peças e o tabuleiro possuem um estilo retrô em **pixel art**, trazendo uma experiência nostálgica e divertida.
+
+![Damas Pixeladas - Demonstração](./demonstracao.gif)
 
 ## 🔗 Acesse o jogo
 
