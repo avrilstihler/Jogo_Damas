@@ -1,0 +1,404 @@
+/* === STYLING INSPIRED BY STARDEW VALLEY - ORIGINAL WITH LIGHTER BROWNS === */
+
+/* === GLOBAL VARIABLES === */
+:root {
+    --font-pixel: 'VT323', 'monospace', sans-serif; /* Ou sua fonte pixel escolhida */
+
+    /* Stardew Valley Original-Inspired Color Palette (with Lighter Browns) */
+    --sdv-bg-main: #4A362A;         /* Marrom principal do fundo, um pouco mais claro que o original #3B2B27 */
+    --sdv-text-light-parchment: #FFF8DC; /* Bege claro para texto (Cornsilk) */
+    --sdv-text-dark-wood: #5D4037;      /* Marrom escuro para texto sobre fundos claros (mantido) */
+
+    --sdv-wood-panel: #7D5E4F;        /* Marrom madeira para painéis, um pouco mais claro que o original #6B4226 */
+    --sdv-wood-panel-light-alt: #93705A; /* Tom de madeira alternativo, mais claro */
+    --sdv-wood-panel-border-light: #B88A77; /* Borda mais clara do painel, ajustada */
+    --sdv-wood-panel-border-dark: #60483F;  /* Borda mais escura do painel, ajustada */
+
+    /* Botões e Acentos - Mantendo a paleta SDV original para contraste e identidade */
+    --sdv-button-bg: #F5DEB3;         /* Bege trigo para botões */
+    --sdv-button-text: var(--sdv-text-dark-wood);
+    --sdv-button-border-highlight: #FFEBCD;
+    --sdv-button-border-shadow: #8B4513;   /* Sombra forte para efeito pixel */
+    --sdv-button-active-bg: #DEB887;
+
+    --sdv-green-accent: #558B2F;
+    --sdv-green-accent-highlight: #7CB342;
+    --sdv-green-accent-dark: #33691E;
+    --sdv-red-accent: #C62828;
+    --sdv-red-accent-highlight: #E57373;
+    --sdv-red-accent-dark: #B71C1C;
+    --sdv-blue-grey-accent: #78909C;
+    --sdv-blue-grey-accent-highlight: #A7C0CD;
+    --sdv-blue-grey-accent-dark: #546E7A;
+
+    --sdv-board-light-square: #E3C16F; /* Mantido original */
+    --sdv-board-dark-square: #8B5A2B;  /* Mantido original */
+    --sdv-board-border: var(--sdv-text-dark-wood); /* Borda do tabuleiro escura */
+
+    --sdv-highlight-yellow: #FFD700;
+    --sdv-highlight-yellow-dark: #DAA520;
+    --sdv-highlight-green: #7CB342;
+    --sdv-highlight-green-dark: #558B2F;
+
+    /* Common Pixel "3D" effect - Mantendo o original forte */
+    --pixel-border-raised-val: var(--sdv-button-border-highlight) var(--sdv-button-border-shadow) var(--sdv-button-border-shadow) var(--sdv-button-border-highlight);
+    --pixel-border-inset-val: var(--sdv-button-border-shadow) var(--sdv-button-border-highlight) var(--sdv-button-border-highlight) var(--sdv-button-border-shadow);
+    --pixel-box-shadow-val: 3px 3px 0px var(--sdv-button-border-shadow);
+    --pixel-box-shadow-hover-val: 4px 4px 0px var(--sdv-button-border-shadow);
+    --pixel-box-shadow-active-val: 2px 2px 0px var(--sdv-button-border-shadow);
+}
+
+/* === GENERAL BODY & PAGE STYLES === */
+body {
+    font-family: var(--font-pixel);
+    background-color: var(--sdv-bg-main); /* Marrom de fundo um pouco mais claro */
+    background-image: url('pixel_landscape_background.png'); /* Sua imagem de fundo original */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--sdv-text-light-parchment); /* Texto claro padrão sobre fundo escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    line-height: 1.3;
+}
+
+/* === SCREEN OVERLAYS (Start Screen) === */
+#start-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 25, 20, 0.85); /* Overlay escuro, pode ser ajustado para --sdv-bg-main com alpha */
+    z-index: 100;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#start-screen.screen-active {
+    display: flex;
+}
+
+
+/* === PANELS (Menus, Game Container) === */
+.panel {
+    background-color: var(--sdv-wood-panel); /* Marrom do painel um pouco mais claro */
+    padding: 25px 35px;
+    border: 4px solid var(--sdv-wood-panel-border-dark); /* Borda escura ajustada */
+    border-top-color: var(--sdv-wood-panel-border-light); /* Borda clara ajustada */
+    border-left-color: var(--sdv-wood-panel-border-light);
+    /* Sombra com base no fundo principal para efeito de "recorte" */
+    box-shadow: 0 0 0 3px var(--sdv-bg-main), 0px 5px 15px rgba(0,0,0,0.35);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px; /* Espaçamento interno dos painéis */
+    width: 90%;
+    box-sizing: border-box;
+}
+
+#start-menu-panel {
+    max-width: 520px;
+}
+
+#game-container {
+    display: none;
+    max-width: 720px;
+    text-align: center;
+}
+#game-container.screen-active {
+    display: flex;
+}
+
+/* === TITLES (h1.screen-title) === */
+.screen-title {
+    font-size: 2.7em; /* Pode ser um pouco maior com o estilo mais definido */
+    color: var(--sdv-highlight-yellow); /* Amarelo vibrante para o título */
+    text-shadow: 2px 2px var(--sdv-text-dark-wood); /* Sombra forte */
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+/* === BUTTONS === */
+.pixel-button {
+    font-family: var(--font-pixel);
+    background-color: var(--sdv-button-bg);
+    color: var(--sdv-button-text);
+    padding: 11px 24px;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 1.2em; /* Tamanho base dos botões */
+    transition: background-color 0.1s, transform 0.05s, box-shadow 0.05s;
+    text-shadow: 1px 1px var(--sdv-button-border-highlight);
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    min-width: 180px;
+    line-height: 1.2;
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: var(--pixel-border-raised-val);
+    box-shadow: var(--pixel-box-shadow-val); /* Sombra forte */
+}
+
+.pixel-button:hover {
+    background-color: var(--sdv-button-border-highlight);
+    transform: translate(-1px, -1px);
+    box-shadow: var(--pixel-box-shadow-hover-val);
+}
+
+.pixel-button:active {
+    background-color: var(--sdv-button-active-bg);
+    transform: translate(1px, 1px);
+    box-shadow: var(--pixel-box-shadow-active-val);
+    border-color: var(--pixel-border-inset-val);
+}
+
+/* Specific Button Styles */
+#start-game-mode-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+#start-game-mode-selector .mode-label {
+    font-size: 1.1em;
+    color: var(--sdv-text-light-parchment); /* Texto claro sobre painel escuro */
+    margin-bottom: 4px;
+    text-shadow: 1px 1px var(--sdv-text-dark-wood);
+}
+
+.start-mode-button.active {
+    background-color: var(--sdv-highlight-yellow);
+    color: var(--sdv-text-dark-wood); /* Texto escuro sobre amarelo vibrante */
+    /* Usar as bordas e sombras originais para o botão ativo */
+    border-color: var(--sdv-highlight-yellow-dark) var(--sdv-button-border-shadow) var(--sdv-button-border-shadow) var(--sdv-highlight-yellow-dark);
+    box-shadow: 3px 3px 0px var(--sdv-button-border-shadow); /* Sombra forte */
+    text-shadow: 1px 1px #FFFACD; /* Sombra de texto mais clara para o amarelo */
+}
+.start-mode-button.active:hover {
+    background-color: #FFEC8B; /* Amarelo mais claro para hover */
+}
+.start-mode-button.active:active {
+    background-color: var(--sdv-highlight-yellow-dark);
+    box-shadow: 2px 2px 0px var(--sdv-button-border-shadow);
+}
+
+#start-game-button {
+    background-color: var(--sdv-green-accent);
+    color: var(--sdv-text-light-parchment);
+    border-color: var(--sdv-green-accent-highlight) var(--sdv-green-accent-dark) var(--sdv-green-accent-dark) var(--sdv-green-accent-highlight);
+    box-shadow: 3px 3px 0px var(--sdv-green-accent-dark);
+    font-size: 1.4em; /* Botão de iniciar proeminente */
+    padding: 13px 30px;
+    text-shadow: 1px 1px var(--sdv-green-accent-dark);
+    min-width: 220px;
+}
+#start-game-button:hover {
+    background-color: var(--sdv-green-accent-highlight);
+    box-shadow: 4px 4px 0px var(--sdv-green-accent-dark);
+}
+#start-game-button:active {
+    background-color: var(--sdv-green-accent);
+    box-shadow: 2px 2px 0px var(--sdv-green-accent-dark);
+}
+
+#reset-button {
+    background-color: var(--sdv-red-accent);
+    color: var(--sdv-text-light-parchment);
+    border-color: var(--sdv-red-accent-highlight) var(--sdv-red-accent-dark) var(--sdv-red-accent-dark) var(--sdv-red-accent-highlight);
+    box-shadow: 3px 3px 0px var(--sdv-red-accent-dark);
+    text-shadow: 1px 1px var(--sdv-red-accent-dark);
+}
+#reset-button:hover {
+    background-color: var(--sdv-red-accent-highlight);
+    box-shadow: 4px 4px 0px var(--sdv-red-accent-dark);
+}
+#reset-button:active {
+    background-color: var(--sdv-red-accent);
+    box-shadow: 2px 2px 0px var(--sdv-red-accent-dark);
+}
+
+#back-to-menu-button {
+    background-color: var(--sdv-blue-grey-accent);
+    color: var(--sdv-text-light-parchment);
+    border-color: var(--sdv-blue-grey-accent-highlight) var(--sdv-blue-grey-accent-dark) var(--sdv-blue-grey-accent-dark) var(--sdv-blue-grey-accent-highlight);
+    box-shadow: 3px 3px 0px var(--sdv-blue-grey-accent-dark);
+    text-shadow: 1px 1px var(--sdv-blue-grey-accent-dark);
+}
+#back-to-menu-button:hover {
+    background-color: var(--sdv-blue-grey-accent-highlight);
+    box-shadow: 4px 4px 0px var(--sdv-blue-grey-accent-dark);
+}
+#back-to-menu-button:active {
+    background-color: var(--sdv-blue-grey-accent);
+    box-shadow: 2px 2px 0px var(--sdv-blue-grey-accent-dark);
+}
+
+/* === GAME AREA SPECIFIC STYLES === */
+#game-controls {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#info-display {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    padding: 12px 18px;
+    background-color: var(--sdv-wood-panel-light-alt); /* Painel de info um pouco mais claro */
+    border-radius: 0;
+    border: 3px solid var(--sdv-wood-panel-border-dark);
+    border-top-color: var(--sdv-wood-panel-border-light);
+    border-left-color: var(--sdv-wood-panel-border-light);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+#turn-display, #score-display {
+    font-size: 1.1em;
+    color: var(--sdv-text-light-parchment); /* Texto claro sobre painel mais escuro */
+    text-shadow: 1px 1px var(--sdv-text-dark-wood);
+    padding: 0 8px;
+}
+
+/* === GAME BOARD === */
+#board-wrapper {
+    display: inline-block;
+    border: 5px solid var(--sdv-board-border);
+    background-color: var(--sdv-board-border);
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+    padding: 4px;
+    border-radius: 0;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* Voltando ao tamanho original do tabuleiro */
+    grid-template-rows: repeat(8, 50px);
+    width: calc(8 * 50px);
+    height: calc(8 * 50px);
+    border: 2px solid var(--sdv-text-dark-wood); /* Borda interna escura e definida */
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.square.light { background-color: var(--sdv-board-light-square); }
+.square.dark { background-color: var(--sdv-board-dark-square); }
+
+/* === GAME PIECES === */
+.piece {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 1px 1px 0px rgba(0,0,0,0.3), inset 1px 1px 0px rgba(255,255,255,0.2);
+    image-rendering: pixelated;
+}
+.p1-piece { background-image: url('player1_piece.png'); }
+.p1-piece.king { background-image: url('player1_king.png'); }
+.p2-piece { background-image: url('player2_piece.png'); }
+.p2-piece.king { background-image: url('player2_king.png'); }
+
+
+/* === HIGHLIGHTS & INDICATORS === */
+.selected-piece-highlight {
+    box-shadow: 0 0 0 3px var(--sdv-highlight-yellow) inset,
+                0 0 0 5px var(--sdv-highlight-yellow-dark);
+    border-radius: 50%;
+}
+
+.valid-move-highlight::after,
+.valid-jump-highlight::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    box-sizing: border-box;
+    opacity: 0.85;
+}
+
+.valid-move-highlight::after {
+    width: 30%;
+    height: 30%;
+    background-color: rgba(255, 215, 0, 0.65); /* Amarelo (Gold) com alpha */
+    border: 1px solid var(--sdv-highlight-yellow-dark);
+}
+
+.valid-jump-highlight::after {
+    width: 40%;
+    height: 40%;
+    background-color: rgba(124, 179, 66, 0.7); /* Verde (Celadon) com alpha */
+    border: 2px solid var(--sdv-highlight-green-dark);
+}
+
+.square.must-move-piece::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border: 3px dashed var(--sdv-highlight-yellow);
+    pointer-events: none;
+    box-shadow: 0 0 5px var(--sdv-highlight-yellow);
+    border-radius: 0px;
+}
+
+/* === MESSAGE AREA === */
+#message-area {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: var(--sdv-highlight-yellow); /* Mensagem em amarelo vibrante */
+    min-height: 1.5em;
+    text-shadow: 1px 1px var(--sdv-text-dark-wood); /* Sombra escura para destaque */
+    text-align: center;
+    width: 90%;
+    max-width: 580px;
+}
+
+/* === AI THINKING STATE === */
+#board.ai-thinking {
+    opacity: 0.7;
+    pointer-events: none;
+    filter: grayscale(30%) brightness(85%);
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damas Pixeladas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <!-- O script de import map pode ser removido se não estiver usando módulos ES6 com bare specifiers -->
+    <!--
+    <script>
+        const importMap = { imports: {} };
+        if (HTMLScriptElement.supportsImportMaps) {
+            const im = document.createElement('script');
+            im.type = 'importmap';
+            im.textContent = JSON.stringify(importMap);
+            document.currentScript.after(im);
+        }
+    </script>
+    -->
+</head>
+<body>
+
+    <!-- TELA INICIAL -->
+    <div id="start-screen" class="screen-active"> 
+        <div id="start-menu-panel" class="panel">
+            <h1 id="start-screen-title" class="screen-title">Damas Pixeladas</h1> 
+
+            <div id="start-game-mode-selector">
+                <p class="mode-label">Modo de Jogo:</p> 
+                <button id="start-pvp-button" class="pixel-button start-mode-button active">Jogador vs Jogador</button>
+                <button id="start-pvm-button" class="pixel-button start-mode-button">Jogador vs IA</button>
+            </div>
+
+            <button id="start-game-button" class="pixel-button">Iniciar Jogo</button>
+        </div>
+    </div>
+
+    <!-- TELA DO JOGO -->
+    <div id="game-container" class="panel" style="display: none;"> 
+        <h1 id="game-screen-title" class="screen-title">Damas Pixeladas</h1> 
+
+        <div id="game-controls">
+            <button id="reset-button" class="pixel-button">Reiniciar Jogo</button>
+            <button id="back-to-menu-button" class="pixel-button">Voltar ao Menu</button>
+        </div>
+
+        <div id="info-display">
+            <p id="turn-display">Vez: Jogador 1 (Branco)</p> 
+            <p id="score-display">Branco: 0 - Preto: 0</p>   
+        </div>
+
+        <div id="board-wrapper">
+            <div id="board">
+                <!-- Os quadrados do tabuleiro serão gerados por JavaScript -->
+            </div>
+        </div>
+
+        <p id="message-area"></p> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
